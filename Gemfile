@@ -19,7 +19,10 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap'
+gem 'bootstrap-sass'
 gem 'figaro'
+gem 'devise'
+gem 'autoprefixer-rails'
 
 group :development, :test do
  gem 'byebug'

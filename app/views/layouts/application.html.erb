@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>NewRailsProject</title>
+  <title>Blocipedia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <div class="pull-right user-info col-xs-12">
+        <% if user_signed_in? %>
+          Signed in as: <strong><%= current_user.email %></strong> |
+          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navnar-link' %> -
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+        <% else %>
+          <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link' %>
+        <% end %>
+      </div>
+    </ul>
+
+
+    <%= yield %>
+  </div>
 
 </body>
 </html>
