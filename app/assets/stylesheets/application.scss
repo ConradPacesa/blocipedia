@@ -1,4 +1,13 @@
 $icon-font-path: 'bootstrap/';
 //@import "bootstrap-sprockets";
 @import "bootstrap";
-@import "welcome"
+@import "welcome";
+@import "wikis";
+
+.nav-tabs {
+  padding-bottom: 0.5rem;
+}
+
+.nav-tabs li {
+  margin-right: 3rem;
+}

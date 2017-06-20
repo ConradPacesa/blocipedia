@@ -8,9 +8,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <div class="container">
     <ul class="nav nav-tabs">
+      <li><%= link_to "Blocipedia", root_path %></li>
+      <li><%= link_to "My Wikis", wikis_path %></li>
+      
       <div class="pull-right user-info col-xs-12">
         <% if user_signed_in? %>
           Signed in as: <strong><%= current_user.email %></strong> |
@@ -21,6 +23,19 @@
         <% end %>
       </div>
     </ul>
+  </br>
+
+  <% if flash[:notice] %>
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:notice] %>
+    </div>
+  <% elsif flash[:alert] %>
+    <div class="alert alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
 
 
     <%= yield %>
