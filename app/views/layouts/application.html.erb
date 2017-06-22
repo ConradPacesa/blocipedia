@@ -12,10 +12,10 @@
     <ul class="nav nav-tabs">
       <li><%= link_to "Blocipedia", root_path %></li>
       <li><%= link_to "My Wikis", wikis_path %></li>
-      
+
       <div class="pull-right user-info col-xs-12">
         <% if user_signed_in? %>
-          Signed in as: <strong><%= current_user.email %></strong> |
+          Signed in as: <strong><%= current_user.name %></strong> |
           <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navnar-link' %> -
           <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
         <% else %>

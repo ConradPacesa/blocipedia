@@ -1,8 +1,8 @@
 class WikisController < ApplicationController
-  before_action :authenticate_user!, except: :show
 
   def index
     @wikis = Wiki.all
+    authorize @wikis
   end
 
   def show
@@ -11,10 +11,12 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    authorize @wiki
   end
 
   def edit
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def create
@@ -22,6 +24,7 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.user = current_user
+    authorize @wiki
 
     if @wiki.save
       flash[:notice] = 'You have successfully created a new wiki.'
@@ -36,6 +39,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    authorize @wiki
 
     if @wiki.save
       flash[:notice] = 'You have successfully updated your wiki.'
@@ -48,6 +52,8 @@ class WikisController < ApplicationController
 
   def destroy
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
+    @wiki.destroy
 
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" was successfully deleted."
@@ -56,5 +62,13 @@ class WikisController < ApplicationController
       flash.now[:alert] = "There was an error deleting the wiki."
       render :show
     end
+  end
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  private
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to(new_user_session_path)
   end
 end

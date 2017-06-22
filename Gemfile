@@ -23,6 +23,7 @@ gem 'bootstrap-sass'
 gem 'figaro'
 gem 'devise'
 gem 'autoprefixer-rails'
+gem 'pundit'
 
 group :development, :test do
  gem 'byebug'
