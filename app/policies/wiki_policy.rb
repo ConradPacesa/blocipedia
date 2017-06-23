@@ -11,7 +11,11 @@ class WikiPolicy
   end
 
   def show?
-    true
+    if wiki.private?
+      user && (user.premium? || user.admin?)
+    else
+      true
+    end
   end
 
   def create?

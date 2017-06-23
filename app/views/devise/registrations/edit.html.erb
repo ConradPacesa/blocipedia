@@ -48,7 +48,7 @@
 <% if current_user.premium? %>
   <h3>Downgrade my account</h3>
   <p>If you downgrade your account we will stop charging your credit card. All of you private wikis will become public.</p>
-  <%= button_to "Downgrade my account", charge_path(current_user), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure?" } %>
+  <%= button_to "Downgrade my account", charge_path(current_user), method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to downgrade your account? All of your private wikis will be public." } %>
 <% else %>
   <h3>Upgrade to premium<h3>
   <p>upgrade to premium in order to create private wikis.</p>
