@@ -5,7 +5,7 @@
     <% @wikis.each do |wiki| %>
       <% if policy(wiki).show? %>
         <tr>
-          <td><%= link_to wiki.title, wiki %></td>
+          <td><%= link_to markdown(wiki.title), wiki %></td>
           <td>
             <% if policy(wiki).edit? %>
               <%= link_to "edit", edit_wiki_path(wiki) %>
