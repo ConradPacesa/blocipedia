@@ -24,6 +24,7 @@ gem 'figaro'
 gem 'devise'
 gem 'autoprefixer-rails'
 gem 'pundit'
+gem 'stripe'
 
 group :development, :test do
  gem 'byebug'
