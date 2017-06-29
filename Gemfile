@@ -27,6 +27,7 @@ gem 'autoprefixer-rails'
 gem 'pundit'
 gem 'stripe'
 gem 'redcarpet'
+gem 'friendly_id'
 
 group :development, :test do
  gem 'byebug'
