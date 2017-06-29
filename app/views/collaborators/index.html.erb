@@ -1,0 +1,27 @@
+<h1 class="text-center">Add Collaborators to the Wiki (showing all users)</h1>
+</br>
+<h5 class="text-center"><%= link_to "Back to edit wiki", edit_wiki_path(@wiki) %></h5>
+<div class="wiki-table">
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Give Access</th>
+    </tr>
+    <% @users.each do |user| %>
+      <% if user.id != @wiki.user_id %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td>
+            <% if not_collaborator?(@wiki.collaborators, user.id) %>
+              <%= link_to "Add", wiki_collaborators_path(user_id: user.id, wiki: @wiki), method: :post, class: 'btn btn-success' %>
+            <% else %>
+              <%= link_to "Remove", wiki_collaborator_path(user_id: user.id, id: @wiki.collaborators.find_by_user_id(user.id).id), method: :delete, class: 'btn btn-danger' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>

@@ -1,5 +1,7 @@
 <h1>Edit Wiki</h1>
-
+<% if @wiki.user == current_user || current_user.admin? %>
+  <%= link_to "Add collaborators", wiki_collaborators_path(@wiki), class: 'btn btn-success' %>
+<% end %>
 <div class="row">
   <div class="col-md-6">
     <%= form_for @wiki do |f| %>
