@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :charges, only: [:new, :create, :destroy]
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
   root 'welcome#index'
 end
