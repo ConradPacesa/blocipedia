@@ -11,7 +11,7 @@
       </div>
       <div class="form-group">
         <%= f.label :body %>
-        <%= f.text_area :body, rows: 20, class: 'form-control', placeholder: 'Enter wiki body' %>
+        <%= f.text_area :body, rows: 20, class: 'form-control', id: 'sourceTA', onkeyup: 'run()', placeholder: 'Enter wiki body' %>
       </div>
       <% if current_user.premium? || current_user.admin? %>
         <div class="form-group">
@@ -25,7 +25,5 @@
       </div>
     <% end %>
   </div>
-  <div class="col-md-6">
-    <%= render partial: 'wikis/wiki', locals: { wiki: @wiki } %>
-  </div>
+  <div class="col-md-6" id="targetDiv"></div>
 </div>
